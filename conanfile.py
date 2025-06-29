@@ -1,11 +1,12 @@
 from conan import ConanFile
 import os
 from conan.tools.files import get, copy
+from conan.tools.cmake import CMakeToolchain
 
 
 class slangRecipe(ConanFile):
     name = "slang"
-    version = "2025.5.3"
+    version = "2025.11"
 
     # Optional metadata
     license = "https://github.com/shader-slang/slang/blob/master/LICENSE"
@@ -37,4 +38,5 @@ class slangRecipe(ConanFile):
         copy(self, "*", self.build_folder, os.path.join(self.package_folder))
 
     def package_info(self):
-        self.cpp_info.libs = ["slang"]
+        self.cpp_info.builddirs = ["cmake"]
+        self.cpp_info.set_property("cmake_find_mode", "none")
