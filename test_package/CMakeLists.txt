@@ -3,5 +3,5 @@ project(PackageTest CXX)
 
 find_package(slang CONFIG REQUIRED)
 
-add_executable(example src/example.cpp)
-target_link_libraries(example slang::slang)
+add_executable(testPackageApp src/testPackageApp.cpp)
+target_link_libraries(testPackageApp slang::slang)
