@@ -6,7 +6,8 @@ from conan.tools.cmake import CMakeToolchain
 
 class slangRecipe(ConanFile):
     name = "slang"
-    version = "2025.11"
+    # Fallback to this version if the CLI option ``--version=xxxx`` is not provided
+    version_fallback = "2025.10.4"
 
     # Optional metadata
     license = "https://github.com/shader-slang/slang/blob/master/LICENSE"
@@ -16,6 +17,9 @@ class slangRecipe(ConanFile):
 
     # Binary configuration
     settings = "os", "arch"
+
+    def set_version(self):
+        self.version = self.version or self.version_fallback
 
     def build(self):
         base_url = "https://github.com/shader-slang/slang/releases/download"
