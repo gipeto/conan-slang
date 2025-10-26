@@ -42,5 +42,5 @@ class slangRecipe(ConanFile):
         copy(self, "*", self.build_folder, os.path.join(self.package_folder))
 
     def package_info(self):
-        self.cpp_info.builddirs = ["cmake"]
+        self.cpp_info.builddirs = ["cmake", "lib/cmake"]
         self.cpp_info.set_property("cmake_find_mode", "none")
